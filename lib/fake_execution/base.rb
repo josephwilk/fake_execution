@@ -3,19 +3,23 @@ RealKernel          = Kernel
 module FakeExecution
   def self.activate!
     Object.class_eval do
-      remove_const(:Kernel)
+      alias_method :real_system, :system
+      alias_method :system, :fake_system
 
-      const_set(:Kernel, FakeExecution::Kernel)
+      alias_method :real_exec, :exec
+      alias_method :exec, :fake_exec
+
+      alias_method :real_backtick, :`
+      alias_method :`, :fake_backtick
     end
     true
   end
 
   def self.deactivate!
-    Object.class_eval do
-      remove_const(:Kernel)
-
-      const_set(:Kernel,       RealKernel)
-    end
+    Kernel.class_eval do
+      alias_method :fake_backtick, :`
+      alias_method :`, :real_backtick
+    end    
     true
   end
 end
