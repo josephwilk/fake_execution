@@ -1,7 +1,7 @@
 Fake Execution
 ======
 
-[![Build Status](https://secure.travis-ci.org/josephwilk/fake-execution.png)](http://travis-ci.org/josephwilk/fake-execution)
+[![Build Status](https://secure.travis-ci.org/josephwilk/fake_execution.png)](http://travis-ci.org/josephwilk/fake_execution)
 
 
 Execution, but... like... fake.
