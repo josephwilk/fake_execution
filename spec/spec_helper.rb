@@ -1,3 +1,3 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
-require 'fake-execution'
+require 'fake_execution'
