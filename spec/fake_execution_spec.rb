@@ -28,8 +28,8 @@ describe "using FakeExecution" do
 
   describe "exec" do
     it "should store the command" do
-      #exec('ls')
-      #cmds.should == ['ls']
+      exec('ls')
+      cmds.should == ['ls']
     end
   end
 end
@@ -41,7 +41,20 @@ describe "not using FakeExecution" do
   
   describe "backtick" do
     it "should run" do
-      `ls`.should_not == ""
+      `echo *`.should_not == "*"
+    end
+  end
+
+  describe "system" do
+    it "should run" do
+      system('echo *').should == true
+    end
+  end
+
+  describe "exec" do
+    it "should run" do
+      pending "exec terminates the tests, so only useful as manual test"
+      exec("echo *").should == ""
     end
   end
 end
