@@ -6,24 +6,24 @@ Execution, but... like... fake.
 Usage
 -----
 
-  require 'fake-execution/safe'
+    require 'fake-execution/safe'
 
-  FakeExecution.activate!
+    FakeExecution.activate!
 
-  `git checkout git://github.com/josephwilk/fake-execution.git`
-  `touch monkeys`
-  system("git add monkeys")
-  system('git commit -m "needs more monkeys"')
-  `git push`
+    `git checkout git://github.com/josephwilk/fake-execution.git`
+    `touch monkeys`
+    system("git add monkeys")
+    system('git commit -m "needs more monkeys"')
+    `git push`
 
-  FakeExecution.deactivate!
+    FakeExecution.deactivate!
 
-  cmds[0].should =~ /git checkout/
-  cmds[1].shold == 'touch monkeys'
+    cmds[0].should =~ /git checkout/
+    cmds[1].shold == 'touch monkeys'
 
 
 License
------
+-------
 
 (The MIT License)
 
