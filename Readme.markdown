@@ -6,8 +6,10 @@ Fake Execution
 
 Execution, but... like... fake.
 
-Usage
+Usage 
 -----
+
+Using fake-execution safe which does not automatically activate FakeExecution, you have to do that manually:
 
     require 'fake-execution/safe'
 
@@ -29,6 +31,27 @@ Usage
 
     `echo *` # outputs: echo *
 
+
+Using Rspec:
+
+     require 'fake-execution/spec_helper'
+     
+     describe "monkeys" do
+       include FakeExecution::SpecHelpers
+       
+       it "should touch the monkey" do
+         `touch monkey`
+         
+         cmds[0].should == 'touch monkey'
+       end
+     end
+
+Using Unsafe mode:
+
+     require 'fake-execution'
+     
+     `touch monkey`
+     puts cmds[0]  # outputs: touch monkey
 
 License
 -------
