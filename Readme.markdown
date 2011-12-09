@@ -20,8 +20,9 @@ Usage
 
     FakeExecution.deactivate!
 
-    cmds[0].should =~ /git checkout/
-    cmds[1].should == 'touch monkeys'
+    cmds[0].should =~ /echo/
+    cmds[1].should =~ /git checkout/
+    cmds[2].should == 'touch monkeys'
 
     `echo *` # outputs: echo *
 
