@@ -11,7 +11,7 @@ Usage
 
 Using fake-execution safe which does not automatically activate FakeExecution, you have to do that manually:
 
-    require 'fake-execution/safe'
+    require 'fake_execution/safe'
 
     FakeExecution.activate!
 
@@ -34,7 +34,7 @@ Using fake-execution safe which does not automatically activate FakeExecution, y
 
 Using Rspec:
 
-     require 'fake-execution/spec_helper'
+     require 'fake_execution/spec_helper'
      
      describe "monkeys" do
        include FakeExecution::SpecHelpers
