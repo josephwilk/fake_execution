@@ -10,6 +10,8 @@ Usage
 
     FakeExecution.activate!
 
+    `echo *` # This is not executed
+    
     `git checkout git://github.com/josephwilk/fake-execution.git`
     `touch monkeys`
     system("git add monkeys")
@@ -18,8 +20,11 @@ Usage
 
     FakeExecution.deactivate!
 
-    cmds[0].should =~ /git checkout/
-    cmds[1].shold == 'touch monkeys'
+    cmds[0].should =~ /echo/
+    cmds[1].should =~ /git checkout/
+    cmds[2].should == 'touch monkeys'
+
+    `echo *` # outputs: echo *
 
 
 License
