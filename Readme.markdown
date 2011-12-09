@@ -48,7 +48,7 @@ Using Rspec:
 
 Using Unsafe mode:
 
-     require 'fake-execution'
+     require 'fake_execution'
      
      `touch monkey`
      puts cmds[0]  # outputs: touch monkey
