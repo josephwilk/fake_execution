@@ -1,6 +1,9 @@
 Fake Execution
 ======
 
+[![Build Status](https://secure.travis-ci.org/josephwilk/fake-execution.png)](http://travis-ci.org/josephwilk/fake-execution)
+
+
 Execution, but... like... fake.
 
 Usage
