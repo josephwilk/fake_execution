@@ -1,6 +1,7 @@
 Fake Execution
 ======
 
+[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/josephwilk/fake_execution)
 [![Build Status](https://secure.travis-ci.org/josephwilk/fake_execution.png)](http://travis-ci.org/josephwilk/fake_execution)
 
 
