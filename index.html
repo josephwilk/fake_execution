@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Fake execution by josephwilk</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Fake execution</h1>
+        <p class="header">Fake out execution in Ruby and test what was executed</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/josephwilk/fake_execution/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/josephwilk/fake_execution/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/josephwilk/fake_execution">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/josephwilk">josephwilk</a></p>
+
+
+      </header>
+      <section>
+        <h1>Fake Execution</h1>
+
+<p>Execution, but... like... fake.</p>
+
+<h2>Usage </h2>
+
+<p>Using fake-execution safe which does not automatically activate FakeExecution, you have to do that manually:</p>
+
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'fake_execution/safe'</span>
+
+<span class="no">FakeExecution</span><span class="o">.</span><span class="n">activate!</span>
+
+<span class="sb">`echo *`</span> <span class="c1"># This is not executed</span>
+
+<span class="sb">`git checkout git://github.com/josephwilk/fake-execution.git`</span>
+<span class="sb">`touch monkeys`</span>
+<span class="nb">system</span><span class="p">(</span><span class="s2">"git add monkeys"</span><span class="p">)</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">'git commit -m "needs more monkeys"'</span><span class="p">)</span>
+<span class="sb">`git push`</span>
+
+<span class="no">FakeExecution</span><span class="o">.</span><span class="n">deactivate!</span>
+
+<span class="n">cmds</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">should</span> <span class="o">=~</span> <span class="sr">/echo/</span>
+<span class="n">cmds</span><span class="o">[</span><span class="mi">1</span><span class="o">].</span><span class="n">should</span> <span class="o">=~</span> <span class="sr">/git checkout/</span>
+<span class="n">cmds</span><span class="o">[</span><span class="mi">2</span><span class="o">].</span><span class="n">should</span> <span class="o">==</span> <span class="s1">'touch monkeys'</span>
+
+<span class="sb">`echo *`</span> <span class="c1"># outputs: echo *</span>
+</pre></div>
+
+<p>Using Rspec:</p>
+
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'fake_execution/spec_helper'</span>
+
+<span class="n">describe</span> <span class="s2">"monkeys"</span> <span class="k">do</span>
+  <span class="kp">include</span> <span class="no">FakeExecution</span><span class="o">::</span><span class="no">SpecHelpers</span>
+
+  <span class="n">it</span> <span class="s2">"should touch the monkey"</span> <span class="k">do</span>
+    <span class="sb">`touch monkey`</span>
+
+    <span class="n">cmds</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">should</span> <span class="o">==</span> <span class="s1">'touch monkey'</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Using Unsafe mode:</p>
+
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'fake_execution'</span>
+
+<span class="sb">`touch monkey`</span>
+<span class="nb">puts</span> <span class="n">cmds</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>  <span class="c1"># outputs: touch monkey</span>
+</pre></div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
