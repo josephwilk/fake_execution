@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe "using FakeExecution" do
+  before(:each) do
+    Kernel.reset_cmds!
+  end
+  
   describe "backtick" do
     it "should not run" do
       `ls`.should == ""
