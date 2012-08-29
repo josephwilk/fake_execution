@@ -15,14 +15,17 @@ module FakeExecution
 
   def self.deactivate!
     Kernel.class_eval do
-      alias_method :fake_backtick, :`
-      alias_method :`, :real_backtick
+      # Have we been activated?
+      if method_defined?(:real_backtick)
+        alias_method :fake_backtick, :`
+        alias_method :`, :real_backtick
 
-      alias_method :fake_system, :system
-      alias_method :system, :real_system
+        alias_method :fake_system, :system
+        alias_method :system, :real_system
 
-      alias_method :fake_exec, :exec
-      alias_method :exec, :real_exec
+        alias_method :fake_exec, :exec
+        alias_method :exec, :real_exec
+      end
     end    
     true
   end

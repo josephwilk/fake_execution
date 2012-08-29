@@ -1,5 +1,6 @@
+require 'fake_execution/spec_helpers'
+
 describe "require fake_execution/spec_helpers" do
-  require 'fake_execution/spec_helpers'
   include FakeExecution::SpecHelpers
   
   before(:each) do
