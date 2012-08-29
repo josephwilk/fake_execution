@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "fake_execution"
-  s.version     = "0.0.2"
+  s.version     = "0.0.3"
   s.authors     = ["Joseph Wilk"]
   s.email       = ["joe@josephwilk.net"]
   s.homepage    = "http://github.com/josephwilk/fake_execution"
