@@ -13,50 +13,50 @@ Usage
 Using fake-execution safe which does not automatically activate FakeExecution, you have to do that manually:
 
 ```ruby
-    require 'fake_execution/safe'
+require 'fake_execution/safe'
 
-    FakeExecution.activate!
+FakeExecution.activate!
 
-    `echo *` # This is not executed
+`echo *` # This is not executed
     
-    `git checkout git://github.com/josephwilk/fake-execution.git`
-    `touch monkeys`
-    system("git add monkeys")
-    system('git commit -m "needs more monkeys"')
-    `git push`
+`git checkout git://github.com/josephwilk/fake-execution.git`
+`touch monkeys`
+system("git add monkeys")
+system('git commit -m "needs more monkeys"')
+`git push`
 
-    FakeExecution.deactivate!
+FakeExecution.deactivate!
 
-    cmds[0].should =~ /echo/
-    cmds[1].should =~ /git checkout/
-    cmds[2].should == 'touch monkeys'
+cmds[0].should =~ /echo/
+cmds[1].should =~ /git checkout/
+cmds[2].should == 'touch monkeys'
 
-    `echo *` # outputs: echo *
+`echo *` # outputs: echo *
 ```
 
 Using Rspec:
 
 ```ruby
-     require 'fake_execution/spec_helper'
+require 'fake_execution/spec_helper'
      
-     describe "monkeys" do
-       include FakeExecution::SpecHelpers
+describe "monkeys" do
+  include FakeExecution::SpecHelpers
        
-       it "should touch the monkey" do
-         `touch monkey`
+  it "should touch the monkey" do
+    `touch monkey`
          
-         cmds[0].should == 'touch monkey'
-       end
-     end
+    cmds[0].should == 'touch monkey'
+  end
+end
 ```
 
 Using Unsafe mode:
 
 ```ruby
-     require 'fake_execution'
+require 'fake_execution'
      
-     `touch monkey`
-     puts cmds[0]  # outputs: touch monkey
+`touch monkey`
+puts cmds[0]  # outputs: touch monkey
 ```
 
 License
