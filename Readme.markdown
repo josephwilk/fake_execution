@@ -12,6 +12,7 @@ Usage
 
 Using fake-execution safe which does not automatically activate FakeExecution, you have to do that manually:
 
+```ruby
     require 'fake_execution/safe'
 
     FakeExecution.activate!
@@ -31,10 +32,11 @@ Using fake-execution safe which does not automatically activate FakeExecution, y
     cmds[2].should == 'touch monkeys'
 
     `echo *` # outputs: echo *
-
+```
 
 Using Rspec:
 
+```ruby
      require 'fake_execution/spec_helper'
      
      describe "monkeys" do
@@ -46,20 +48,23 @@ Using Rspec:
          cmds[0].should == 'touch monkey'
        end
      end
+```
 
 Using Unsafe mode:
 
+```ruby
      require 'fake_execution'
      
      `touch monkey`
      puts cmds[0]  # outputs: touch monkey
+```
 
 License
 -------
 
 (The MIT License)
 
-Copyright (c) 2011 Joseph Wilk
+Copyright (c) 2011,2012 Joseph Wilk
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
